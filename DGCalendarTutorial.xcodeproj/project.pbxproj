@@ -14,6 +14,19 @@
 		0B4F5D881C12438E0095C9D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B4F5D861C12438E0095C9D4 /* LaunchScreen.storyboard */; };
 		0B4F5D931C12438E0095C9D4 /* DGCalendarTutorialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F5D921C12438E0095C9D4 /* DGCalendarTutorialTests.swift */; };
 		0B4F5D9E1C12438E0095C9D4 /* DGCalendarTutorialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F5D9D1C12438E0095C9D4 /* DGCalendarTutorialUITests.swift */; };
+		0BC7C3A31C13AB980027ACF9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3A11C13AB980027ACF9 /* Bolts.framework */; };
+		0BC7C3A41C13AB980027ACF9 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3A21C13AB980027ACF9 /* Parse.framework */; };
+		0BC7C3A61C13ABFB0027ACF9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3A51C13ABFB0027ACF9 /* AudioToolbox.framework */; };
+		0BC7C3A81C13AC060027ACF9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3A71C13AC060027ACF9 /* CFNetwork.framework */; };
+		0BC7C3AA1C13AC0E0027ACF9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3A91C13AC0E0027ACF9 /* CoreGraphics.framework */; };
+		0BC7C3AC1C13AC150027ACF9 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3AB1C13AC150027ACF9 /* CoreLocation.framework */; };
+		0BC7C3AE1C13AC1D0027ACF9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3AD1C13AC1D0027ACF9 /* QuartzCore.framework */; };
+		0BC7C3B01C13AC260027ACF9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3AF1C13AC260027ACF9 /* Security.framework */; };
+		0BC7C3B21C13AC2D0027ACF9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3B11C13AC2D0027ACF9 /* StoreKit.framework */; };
+		0BC7C3B41C13AC360027ACF9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3B31C13AC360027ACF9 /* SystemConfiguration.framework */; };
+		0BC7C3B61C13AC3D0027ACF9 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3B51C13AC3D0027ACF9 /* libz.tbd */; };
+		0BC7C3B81C13AC460027ACF9 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3B71C13AC460027ACF9 /* libsqlite3.tbd */; };
+		320C028FC6A331B56734474E /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC226BC6C2DBA2A47D4B326 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +60,21 @@
 		0B4F5D991C12438E0095C9D4 /* DGCalendarTutorialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DGCalendarTutorialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4F5D9D1C12438E0095C9D4 /* DGCalendarTutorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGCalendarTutorialUITests.swift; sourceTree = "<group>"; };
 		0B4F5D9F1C12438F0095C9D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BC7C3A11C13AB980027ACF9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../Downloads/parse-library-1.10.0/Bolts.framework"; sourceTree = "<group>"; };
+		0BC7C3A21C13AB980027ACF9 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../Downloads/parse-library-1.10.0/Parse.framework"; sourceTree = "<group>"; };
+		0BC7C3A51C13ABFB0027ACF9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0BC7C3A71C13AC060027ACF9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0BC7C3A91C13AC0E0027ACF9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0BC7C3AB1C13AC150027ACF9 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0BC7C3AD1C13AC1D0027ACF9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0BC7C3AF1C13AC260027ACF9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0BC7C3B11C13AC2D0027ACF9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		0BC7C3B31C13AC360027ACF9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0BC7C3B51C13AC3D0027ACF9 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		0BC7C3B71C13AC460027ACF9 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		2CC226BC6C2DBA2A47D4B326 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48F4CAAA1A4F5AE9E692C6EE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4A2EC0F69E59A08F4A4D76FE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +82,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BC7C3B81C13AC460027ACF9 /* libsqlite3.tbd in Frameworks */,
+				0BC7C3B61C13AC3D0027ACF9 /* libz.tbd in Frameworks */,
+				0BC7C3B41C13AC360027ACF9 /* SystemConfiguration.framework in Frameworks */,
+				0BC7C3B21C13AC2D0027ACF9 /* StoreKit.framework in Frameworks */,
+				0BC7C3B01C13AC260027ACF9 /* Security.framework in Frameworks */,
+				0BC7C3AE1C13AC1D0027ACF9 /* QuartzCore.framework in Frameworks */,
+				0BC7C3AC1C13AC150027ACF9 /* CoreLocation.framework in Frameworks */,
+				0BC7C3AA1C13AC0E0027ACF9 /* CoreGraphics.framework in Frameworks */,
+				0BC7C3A81C13AC060027ACF9 /* CFNetwork.framework in Frameworks */,
+				0BC7C3A61C13ABFB0027ACF9 /* AudioToolbox.framework in Frameworks */,
+				0BC7C3A31C13AB980027ACF9 /* Bolts.framework in Frameworks */,
+				0BC7C3A41C13AB980027ACF9 /* Parse.framework in Frameworks */,
+				320C028FC6A331B56734474E /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,10 +118,12 @@
 		0B4F5D711C12438E0095C9D4 = {
 			isa = PBXGroup;
 			children = (
+				0BC7C3BA1C13AC850027ACF9 /* Frameworks */,
 				0B4F5D7C1C12438E0095C9D4 /* DGCalendarTutorial */,
 				0B4F5D911C12438E0095C9D4 /* DGCalendarTutorialTests */,
 				0B4F5D9C1C12438E0095C9D4 /* DGCalendarTutorialUITests */,
 				0B4F5D7B1C12438E0095C9D4 /* Products */,
+				8F688C5C09F62A68C68F95FE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +168,35 @@
 			path = DGCalendarTutorialUITests;
 			sourceTree = "<group>";
 		};
+		0BC7C3BA1C13AC850027ACF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0BC7C3B71C13AC460027ACF9 /* libsqlite3.tbd */,
+				0BC7C3B51C13AC3D0027ACF9 /* libz.tbd */,
+				0BC7C3B31C13AC360027ACF9 /* SystemConfiguration.framework */,
+				0BC7C3B11C13AC2D0027ACF9 /* StoreKit.framework */,
+				0BC7C3AF1C13AC260027ACF9 /* Security.framework */,
+				0BC7C3AD1C13AC1D0027ACF9 /* QuartzCore.framework */,
+				0BC7C3AB1C13AC150027ACF9 /* CoreLocation.framework */,
+				0BC7C3A91C13AC0E0027ACF9 /* CoreGraphics.framework */,
+				0BC7C3A71C13AC060027ACF9 /* CFNetwork.framework */,
+				0BC7C3A51C13ABFB0027ACF9 /* AudioToolbox.framework */,
+				0BC7C3A11C13AB980027ACF9 /* Bolts.framework */,
+				0BC7C3A21C13AB980027ACF9 /* Parse.framework */,
+				2CC226BC6C2DBA2A47D4B326 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8F688C5C09F62A68C68F95FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4A2EC0F69E59A08F4A4D76FE /* Pods.debug.xcconfig */,
+				48F4CAAA1A4F5AE9E692C6EE /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +204,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0B4F5DA21C12438F0095C9D4 /* Build configuration list for PBXNativeTarget "DGCalendarTutorial" */;
 			buildPhases = (
+				C6AFE2B223DE145D6EC56F1D /* Check Pods Manifest.lock */,
 				0B4F5D761C12438E0095C9D4 /* Sources */,
 				0B4F5D771C12438E0095C9D4 /* Frameworks */,
 				0B4F5D781C12438E0095C9D4 /* Resources */,
+				26C1DA03413D64C1F9C5B7CA /* Embed Pods Frameworks */,
+				39A0A99557B08B7801094D24 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +328,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26C1DA03413D64C1F9C5B7CA /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39A0A99557B08B7801094D24 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6AFE2B223DE145D6EC56F1D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0B4F5D761C12438E0095C9D4 /* Sources */ = {
@@ -400,23 +523,30 @@
 		};
 		0B4F5DA31C12438F0095C9D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A2EC0F69E59A08F4A4D76FE /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = DGCalendarTutorial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = iOSMobileDevelopment.DGCalendarTutorial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		0B4F5DA41C12438F0095C9D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48F4CAAA1A4F5AE9E692C6EE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = DGCalendarTutorial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = iOSMobileDevelopment.DGCalendarTutorial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
@@ -487,6 +617,7 @@
 				0B4F5DA41C12438F0095C9D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0B4F5DA51C12438F0095C9D4 /* Build configuration list for PBXNativeTarget "DGCalendarTutorialTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +626,7 @@
 				0B4F5DA71C12438F0095C9D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0B4F5DA81C12438F0095C9D4 /* Build configuration list for PBXNativeTarget "DGCalendarTutorialUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +635,7 @@
 				0B4F5DAA1C12438F0095C9D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
