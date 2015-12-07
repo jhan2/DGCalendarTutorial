@@ -14,8 +14,8 @@ class Event {
     var objectID : String
     var eventName : String
     var hostedBy : String
-    var start : String
-    var end : String
+    var start : NSDate
+    var end : NSDate
     var location : String
     var description : String
     
@@ -23,8 +23,8 @@ class Event {
         objectID = "objectID?"
         eventName = "eventName?"
         hostedBy = "hostedBy?"
-        start = "start?"
-        end = "end?"
+        start = NSDate()
+        end = NSDate()
         location = "location?"
         description = "description"
     }

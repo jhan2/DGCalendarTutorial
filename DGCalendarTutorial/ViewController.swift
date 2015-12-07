@@ -17,12 +17,13 @@ class ViewController: UIViewController {
 //    @IBOutlet weak var hostedByLabel: UILabel!
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
-//    @IBOutlet weak var locationLabel: UILabel!
-//    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
 
     var savedEventId : String = ""
-    var arrayIndex : Int = 0
+    var arrayIndex : Int = 3
     var eventsArray: [Event] = []
+    var dateFormatter = NSDateFormatter()
     
     
     
@@ -92,7 +93,7 @@ class ViewController: UIViewController {
         if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
             eventStore.requestAccessToEntityType(.Event, completion: {
                 granted, error in
-                self.createEvent(eventStore, title: self.eventsArray[self.arrayIndex].eventName, startDate: startDate, endDate: endDate)
+                self.createEvent(eventStore, title: self.eventsArray[self.arrayIndex].eventName, startDate: self.eventsArray[self.arrayIndex].start, endDate: self.eventsArray[self.arrayIndex].end)
             })
         } else {
             createEvent(eventStore, title: "Grapevine Event!", startDate: startDate, endDate: endDate)
@@ -115,15 +116,11 @@ class ViewController: UIViewController {
         
     }
     
-    
-    
-    
     func getEventsDataFromParse() {
         var query = PFQuery(className:"Event")
         //query.whereKey("playerName", equalTo:"Sean Plott")
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
-            print ("got here")
             if error == nil {
                 // The find succeeded.
                 print("Successfully retrieved \(objects!.count) scores.")
@@ -132,17 +129,16 @@ class ViewController: UIViewController {
                     for object in objects {
                         let newEvent = Event()
                         
-                        print(object.objectId)
-                        print(object["EventName"])
-                        
                         newEvent.objectID = object.objectId!
                         newEvent.eventName = object["EventName"] as! String
+                        newEvent.location = object["location"] as! String
+                        newEvent.start = object["start"] as! NSDate
+                        newEvent.end = object["end"] as! NSDate
+                        newEvent.description = object["description"] as! String
                         
                         // add this new Event object to the eventsArray
                         self.eventsArray.append(newEvent)
-                        
-                        print("testing")
-                        print(self.eventsArray[0].eventName)
+
                     }
                 }
             } else {
@@ -159,16 +155,11 @@ class ViewController: UIViewController {
     func displayEvent() {
         objectIDLabel.text = self.eventsArray[arrayIndex].objectID
         eventNameLabel.text = self.eventsArray[arrayIndex].eventName
-////        hostedByLabel.text = "hi"
-        startLabel.text = "hi"
-        endLabel.text = "hi"
-////        locationLabel.text = "hi"
-////        descriptionLabel.text = "hi"
-//
-        if (eventsArray.isEmpty != true) {
-            print("display" + eventsArray[arrayIndex].objectID)
-            print("display" + eventsArray[arrayIndex].eventName)
-        }
+//      hostedByLabel.text = "hi"
+        startLabel.text = dateFormatter.stringFromDate(self.eventsArray[arrayIndex].start)
+        print("got here")
+        locationLabel.text = self.eventsArray[arrayIndex].location
+        descriptionLabel.text = self.eventsArray[arrayIndex].description
     }
     
     
