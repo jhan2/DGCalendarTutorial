@@ -12,19 +12,37 @@ import Parse
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var objectIDLabel: UILabel!
+    @IBOutlet weak var eventNameLabel: UILabel!
+//    @IBOutlet weak var hostedByLabel: UILabel!
+    @IBOutlet weak var startLabel: UILabel!
+    @IBOutlet weak var endLabel: UILabel!
+//    @IBOutlet weak var locationLabel: UILabel!
+//    @IBOutlet weak var descriptionLabel: UILabel!
+
     var savedEventId : String = ""
+    var arrayIndex : Int = 0
+    var eventsArray: [Event] = []
+    
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Testing parse set up 
-        let testObject = PFObject(className: "Event")
-        testObject["EventName"] = "End Of Finals"
-        testObject["hostedBy"] = "The Students of CMU"
-        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            print("Object has been saved.")
-        }
+        
+        getEventsDataFromParse()
+        
+//        // Testing parse set up
+//        let testObject = PFObject(className: "Event")
+//        testObject["EventName"] = "End Of Finals"
+//        testObject["hostedBy"] = "The Students of CMU"
+//        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+//            print("Object has been saved.")
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,7 +92,7 @@ class ViewController: UIViewController {
         if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
             eventStore.requestAccessToEntityType(.Event, completion: {
                 granted, error in
-                self.createEvent(eventStore, title: "Grapevine Event!", startDate: startDate, endDate: endDate)
+                self.createEvent(eventStore, title: self.eventsArray[self.arrayIndex].eventName, startDate: startDate, endDate: endDate)
             })
         } else {
             createEvent(eventStore, title: "Grapevine Event!", startDate: startDate, endDate: endDate)
@@ -95,6 +113,68 @@ class ViewController: UIViewController {
             deleteEvent(eventStore, eventIdentifier: savedEventId)
         }
         
+    }
+    
+    
+    
+    
+    func getEventsDataFromParse() {
+        var query = PFQuery(className:"Event")
+        //query.whereKey("playerName", equalTo:"Sean Plott")
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            print ("got here")
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) scores.")
+                // Do something with the found objects
+                if let objects = objects {
+                    for object in objects {
+                        let newEvent = Event()
+                        
+                        print(object.objectId)
+                        print(object["EventName"])
+                        
+                        newEvent.objectID = object.objectId!
+                        newEvent.eventName = object["EventName"] as! String
+                        
+                        // add this new Event object to the eventsArray
+                        self.eventsArray.append(newEvent)
+                        
+                        print("testing")
+                        print(self.eventsArray[0].eventName)
+                    }
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+            self.displayEvent()
+        }
+        
+
+    }
+    
+    
+    func displayEvent() {
+        objectIDLabel.text = self.eventsArray[arrayIndex].objectID
+        eventNameLabel.text = self.eventsArray[arrayIndex].eventName
+////        hostedByLabel.text = "hi"
+        startLabel.text = "hi"
+        endLabel.text = "hi"
+////        locationLabel.text = "hi"
+////        descriptionLabel.text = "hi"
+//
+        if (eventsArray.isEmpty != true) {
+            print("display" + eventsArray[arrayIndex].objectID)
+            print("display" + eventsArray[arrayIndex].eventName)
+        }
+    }
+    
+    
+    @IBAction func nextButtonClicked() {
+        arrayIndex++;
+        displayEvent()
     }
 }
 

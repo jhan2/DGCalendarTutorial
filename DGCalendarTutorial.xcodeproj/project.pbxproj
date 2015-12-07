@@ -14,6 +14,7 @@
 		0B4F5D881C12438E0095C9D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B4F5D861C12438E0095C9D4 /* LaunchScreen.storyboard */; };
 		0B4F5D931C12438E0095C9D4 /* DGCalendarTutorialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F5D921C12438E0095C9D4 /* DGCalendarTutorialTests.swift */; };
 		0B4F5D9E1C12438E0095C9D4 /* DGCalendarTutorialUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F5D9D1C12438E0095C9D4 /* DGCalendarTutorialUITests.swift */; };
+		0B5F649F1C150CDF009F5F3C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5F649E1C150CDF009F5F3C /* Event.swift */; };
 		0BC7C3A31C13AB980027ACF9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3A11C13AB980027ACF9 /* Bolts.framework */; };
 		0BC7C3A41C13AB980027ACF9 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3A21C13AB980027ACF9 /* Parse.framework */; };
 		0BC7C3A61C13ABFB0027ACF9 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BC7C3A51C13ABFB0027ACF9 /* AudioToolbox.framework */; };
@@ -60,6 +61,7 @@
 		0B4F5D991C12438E0095C9D4 /* DGCalendarTutorialUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DGCalendarTutorialUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4F5D9D1C12438E0095C9D4 /* DGCalendarTutorialUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGCalendarTutorialUITests.swift; sourceTree = "<group>"; };
 		0B4F5D9F1C12438F0095C9D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B5F649E1C150CDF009F5F3C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		0BC7C3A11C13AB980027ACF9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../Downloads/parse-library-1.10.0/Bolts.framework"; sourceTree = "<group>"; };
 		0BC7C3A21C13AB980027ACF9 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../Downloads/parse-library-1.10.0/Parse.framework"; sourceTree = "<group>"; };
 		0BC7C3A51C13ABFB0027ACF9 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -143,6 +145,7 @@
 				0B4F5D7D1C12438E0095C9D4 /* AppDelegate.swift */,
 				0B4F5D7F1C12438E0095C9D4 /* ViewController.swift */,
 				0B4F5D811C12438E0095C9D4 /* Main.storyboard */,
+				0B5F649E1C150CDF009F5F3C /* Event.swift */,
 				0B4F5D841C12438E0095C9D4 /* Assets.xcassets */,
 				0B4F5D861C12438E0095C9D4 /* LaunchScreen.storyboard */,
 				0B4F5D891C12438E0095C9D4 /* Info.plist */,
@@ -382,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B5F649F1C150CDF009F5F3C /* Event.swift in Sources */,
 				0B4F5D801C12438E0095C9D4 /* ViewController.swift in Sources */,
 				0B4F5D7E1C12438E0095C9D4 /* AppDelegate.swift in Sources */,
 			);
