@@ -24,6 +24,8 @@ class ViewController: UIViewController {
     var arrayIndex : Int = 3
     var eventsArray: [Event] = []
     var dateFormatter = NSDateFormatter()
+    // dateFormatter.timezone = NSTimeZone(name: "US/Eastern")
+
     
     
     
@@ -67,6 +69,15 @@ class ViewController: UIViewController {
         } catch {
             print("Bad things happened")
         }
+        
+        let alertController = UIAlertController(title: nil, message: "Added!", preferredStyle: .Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        presentViewController(alertController, animated: true, completion: nil)
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+            Int64(3 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            presentedViewController!.dismissViewControllerAnimated(true, completion: nil);
+        }
     }
     
     // Removes an event from the EKEventStore. The method assumes the eventStore is created and
@@ -96,7 +107,7 @@ class ViewController: UIViewController {
                 self.createEvent(eventStore, title: self.eventsArray[self.arrayIndex].eventName, startDate: self.eventsArray[self.arrayIndex].start, endDate: self.eventsArray[self.arrayIndex].end)
             })
         } else {
-            createEvent(eventStore, title: "Grapevine Event!", startDate: startDate, endDate: endDate)
+                self.createEvent(eventStore, title: self.eventsArray[self.arrayIndex].eventName, startDate: self.eventsArray[self.arrayIndex].start, endDate: self.eventsArray[self.arrayIndex].end)
         }
     }
     
