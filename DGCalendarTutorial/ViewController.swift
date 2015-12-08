@@ -24,28 +24,47 @@ class ViewController: UIViewController {
     var arrayIndex : Int = 3
     var eventsArray: [Event] = []
     var dateFormatter = NSDateFormatter()
-    // dateFormatter.timezone = NSTimeZone(name: "US/Eastern")
 
+    // IBActions
+    @IBAction func nextButtonClicked() {
+        arrayIndex++;
+        displayEvent()
+    }
     
     
+    // Responds to button to add event. This checks that we have permission first, before adding the
+    // event
+    @IBAction func addEvent(sender: UIButton) {
+        let eventStore = EKEventStore()
+        
+        let startDate = NSDate()
+        let endDate = startDate.dateByAddingTimeInterval(60 * 60) // One hour
+        
+        if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
+            eventStore.requestAccessToEntityType(.Event, completion: {
+                granted, error in
+                self.createEvent(eventStore, title: self.eventsArray[self.arrayIndex].eventName, startDate: self.eventsArray[self.arrayIndex].start, endDate: self.eventsArray[self.arrayIndex].end)
+            })
+        } else {
+            self.createEvent(eventStore, title: self.eventsArray[self.arrayIndex].eventName, startDate: self.eventsArray[self.arrayIndex].start, endDate: self.eventsArray[self.arrayIndex].end)
+        }
+    }
     
-    
-    
-    
+
     override func viewDidLoad() {
+        print("got here")
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
         getEventsDataFromParse()
         
-//        // Testing parse set up
-//        let testObject = PFObject(className: "Event")
-//        testObject["EventName"] = "End Of Finals"
-//        testObject["hostedBy"] = "The Students of CMU"
-//        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-//            print("Object has been saved.")
-//        }
+        //        // Testing parse set up
+        //        let testObject = PFObject(className: "Event")
+        //        testObject["EventName"] = "End Of Finals"
+        //        testObject["hostedBy"] = "The Students of CMU"
+        //        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+        //            print("Object has been saved.")
+        //        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,61 +89,22 @@ class ViewController: UIViewController {
             print("Bad things happened")
         }
         
-        let alertController = UIAlertController(title: nil, message: "Added!", preferredStyle: .Alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        
+        let alertController = UIAlertController(title: "Event Saved!", message: "Your event has been saved to your iCalendar.", preferredStyle: .Alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        
         presentViewController(alertController, animated: true, completion: nil)
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
-            Int64(3 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-            presentedViewController!.dismissViewControllerAnimated(true, completion: nil);
-        }
-    }
-    
-    // Removes an event from the EKEventStore. The method assumes the eventStore is created and
-    // accessible
-    func deleteEvent(eventStore: EKEventStore, eventIdentifier: String) {
-        let eventToRemove = eventStore.eventWithIdentifier(eventIdentifier)
-        if (eventToRemove != nil) {
-            do {
-                try eventStore.removeEvent(eventToRemove!, span: .ThisEvent)
-            } catch {
-                print("Bad things happened")
-            }
-        }
-    }
-    
-    // Responds to button to add event. This checks that we have permission first, before adding the
-    // event
-    @IBAction func addEvent(sender: UIButton) {
-        let eventStore = EKEventStore()
         
-        let startDate = NSDate()
-        let endDate = startDate.dateByAddingTimeInterval(60 * 60) // One hour
         
-        if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
-            eventStore.requestAccessToEntityType(.Event, completion: {
-                granted, error in
-                self.createEvent(eventStore, title: self.eventsArray[self.arrayIndex].eventName, startDate: self.eventsArray[self.arrayIndex].start, endDate: self.eventsArray[self.arrayIndex].end)
-            })
-        } else {
-                self.createEvent(eventStore, title: self.eventsArray[self.arrayIndex].eventName, startDate: self.eventsArray[self.arrayIndex].start, endDate: self.eventsArray[self.arrayIndex].end)
-        }
-    }
-    
-    
-    // Responds to button to remove event. This checks that we have permission first, before removing the
-    // event
-    @IBAction func removeEvent(sender: UIButton) {
-        let eventStore = EKEventStore()
-        
-        if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
-            eventStore.requestAccessToEntityType(.Event, completion: { (granted, error) -> Void in
-                self.deleteEvent(eventStore, eventIdentifier: self.savedEventId)
-            })
-        } else {
-            deleteEvent(eventStore, eventIdentifier: savedEventId)
-        }
-        
+//        let alertController = UIAlertController(title: nil, message: "Added!", preferredStyle: .Alert)
+//        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+//        presentViewController(alertController, animated: true, completion: nil)
+//        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+//            Int64(3 * Double(NSEC_PER_SEC)))
+//        dispatch_after(delayTime, dispatch_get_main_queue()) {
+//            presentedViewController!.dismissViewControllerAnimated(true, completion: nil);
+//        }
     }
     
     func getEventsDataFromParse() {
@@ -164,19 +144,61 @@ class ViewController: UIViewController {
     
     
     func displayEvent() {
-        objectIDLabel.text = self.eventsArray[arrayIndex].objectID
-        eventNameLabel.text = self.eventsArray[arrayIndex].eventName
-//      hostedByLabel.text = "hi"
-        startLabel.text = dateFormatter.stringFromDate(self.eventsArray[arrayIndex].start)
-        print("got here")
-        locationLabel.text = self.eventsArray[arrayIndex].location
-        descriptionLabel.text = self.eventsArray[arrayIndex].description
+        if (arrayIndex < self.eventsArray.count) {
+            objectIDLabel.text = self.eventsArray[arrayIndex].objectID
+            eventNameLabel.text = self.eventsArray[arrayIndex].eventName
+//          hostedByLabel.text = "hi"
+            startLabel.text = dateFormatter.stringFromDate(self.eventsArray[arrayIndex].start)
+            locationLabel.text = self.eventsArray[arrayIndex].location
+            descriptionLabel.text = self.eventsArray[arrayIndex].description
+        } else {
+            let alertController = UIAlertController(title: "No more events to display", message: "There are no more events. Check back in a few hours for more!", preferredStyle: .Alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertController.addAction(defaultAction)
+            
+            presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    // converts a NSDate object from GMT to EST (subtract 5 hours, 18000 seconds)
+    func convertToEST(date: NSDate) -> NSDate {
+        let newDate = date.dateByAddingTimeInterval(-18000)
+        return newDate
     }
     
     
-    @IBAction func nextButtonClicked() {
-        arrayIndex++;
-        displayEvent()
-    }
+    
+    
+    
+    
+    
+    // Probably functions that are not needed for Grapevine
+    //    // Removes an event from the EKEventStore. The method assumes the eventStore is created and
+    //    // accessible
+    //    func deleteEvent(eventStore: EKEventStore, eventIdentifier: String) {
+    //        let eventToRemove = eventStore.eventWithIdentifier(eventIdentifier)
+    //        if (eventToRemove != nil) {
+    //            do {
+    //                try eventStore.removeEvent(eventToRemove!, span: .ThisEvent)
+    //            } catch {
+    //                print("Bad things happened")
+    //            }
+    //        }
+    //    }
+    
+    //    // Responds to button to remove event. This checks that we have permission first, before removing the
+    //    // event
+    //    @IBAction func removeEvent(sender: UIButton) {
+    //        let eventStore = EKEventStore()
+    //
+    //        if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
+    //            eventStore.requestAccessToEntityType(.Event, completion: { (granted, error) -> Void in
+    //                self.deleteEvent(eventStore, eventIdentifier: self.savedEventId)
+    //            })
+    //        } else {
+    //            deleteEvent(eventStore, eventIdentifier: savedEventId)
+    //        }
+    //        
+    //    }
 }
 
