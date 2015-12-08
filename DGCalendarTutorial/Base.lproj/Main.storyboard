@@ -58,16 +58,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="eventname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4L1-pk-EWv">
-                                <rect key="frame" x="12" y="263" width="158" height="43"/>
+                                <rect key="frame" x="12" y="236" width="158" height="43"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="objectid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0h-US-wTV">
-                                <rect key="frame" x="12" y="249" width="165" height="20"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -83,10 +76,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCc-uh-9Fd">
-                                <rect key="frame" x="198" y="274" width="87" height="22"/>
+                                <rect key="frame" x="229" y="247" width="87" height="22"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hostedby" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxL-la-Qne">
+                                <rect key="frame" x="12" y="274" width="205" height="23"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -97,8 +97,8 @@
                     <connections>
                         <outlet property="descriptionLabel" destination="PvU-oD-6DZ" id="Luf-Wb-k30"/>
                         <outlet property="eventNameLabel" destination="4L1-pk-EWv" id="LFE-gL-5bw"/>
+                        <outlet property="hostedByLabel" destination="hxL-la-Qne" id="f0z-dC-x7f"/>
                         <outlet property="locationLabel" destination="fCc-uh-9Fd" id="gGp-4g-rCM"/>
-                        <outlet property="objectIDLabel" destination="y0h-US-wTV" id="YuM-bv-dgi"/>
                         <outlet property="startLabel" destination="kzU-dE-T8B" id="Qex-dn-kgR"/>
                     </connections>
                 </viewController>

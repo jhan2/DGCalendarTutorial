@@ -12,16 +12,14 @@ import Parse
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var objectIDLabel: UILabel!
     @IBOutlet weak var eventNameLabel: UILabel!
-//    @IBOutlet weak var hostedByLabel: UILabel!
+    @IBOutlet weak var hostedByLabel: UILabel!
     @IBOutlet weak var startLabel: UILabel!
-    @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
 
     var savedEventId : String = ""
-    var arrayIndex : Int = 3
+    var arrayIndex : Int = 0
     var eventsArray: [Event] = []
     var dateFormatter = NSDateFormatter()
 
@@ -36,9 +34,7 @@ class ViewController: UIViewController {
     // event
     @IBAction func addEvent(sender: UIButton) {
         let eventStore = EKEventStore()
-        
-        let startDate = NSDate()
-        let endDate = startDate.dateByAddingTimeInterval(60 * 60) // One hour
+
         
         if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
             eventStore.requestAccessToEntityType(.Event, completion: {
@@ -46,7 +42,7 @@ class ViewController: UIViewController {
                 self.createEvent(eventStore, title: self.eventsArray[self.arrayIndex].eventName, startDate: self.eventsArray[self.arrayIndex].start, endDate: self.eventsArray[self.arrayIndex].end)
             })
         } else {
-            self.createEvent(eventStore, title: self.eventsArray[self.arrayIndex].eventName, startDate: self.eventsArray[self.arrayIndex].start, endDate: self.eventsArray[self.arrayIndex].end)
+            self.createEvent(eventStore, title: self.eventsArray[self.arrayIndex].eventName, startDate: self.eventsArray[arrayIndex].start, endDate: self.eventsArray[arrayIndex].end)
         }
     }
     
@@ -55,6 +51,8 @@ class ViewController: UIViewController {
         print("got here")
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // sets the display date format for the dateformatter, used for all dates with the stringFromDate method
+        dateFormatter.dateFormat = "MMM dd, yyyy h:mm a"
         
         getEventsDataFromParse()
         
@@ -81,6 +79,11 @@ class ViewController: UIViewController {
         event.title = title
         event.startDate = startDate
         event.endDate = endDate
+        
+        print(event.startDate)
+        print(event.endDate)
+        
+        
         event.calendar = eventStore.defaultCalendarForNewEvents
         do {
             try eventStore.saveEvent(event, span: .ThisEvent)
@@ -123,6 +126,7 @@ class ViewController: UIViewController {
                         newEvent.objectID = object.objectId!
                         newEvent.eventName = object["EventName"] as! String
                         newEvent.location = object["location"] as! String
+                        newEvent.hostedBy = object["hostedBy"] as! String
                         newEvent.start = object["start"] as! NSDate
                         newEvent.end = object["end"] as! NSDate
                         newEvent.description = object["description"] as! String
@@ -145,9 +149,8 @@ class ViewController: UIViewController {
     
     func displayEvent() {
         if (arrayIndex < self.eventsArray.count) {
-            objectIDLabel.text = self.eventsArray[arrayIndex].objectID
             eventNameLabel.text = self.eventsArray[arrayIndex].eventName
-//          hostedByLabel.text = "hi"
+            hostedByLabel.text = self.eventsArray[arrayIndex].hostedBy
             startLabel.text = dateFormatter.stringFromDate(self.eventsArray[arrayIndex].start)
             locationLabel.text = self.eventsArray[arrayIndex].location
             descriptionLabel.text = self.eventsArray[arrayIndex].description
@@ -159,16 +162,6 @@ class ViewController: UIViewController {
             presentViewController(alertController, animated: true, completion: nil)
         }
     }
-    
-    // converts a NSDate object from GMT to EST (subtract 5 hours, 18000 seconds)
-    func convertToEST(date: NSDate) -> NSDate {
-        let newDate = date.dateByAddingTimeInterval(-18000)
-        return newDate
-    }
-    
-    
-    
-    
     
     
     
@@ -199,6 +192,17 @@ class ViewController: UIViewController {
     //            deleteEvent(eventStore, eventIdentifier: savedEventId)
     //        }
     //        
+    //    }
+    
+    
+    
+    // may not be necessary
+    //    // converts a NSDate object from GMT to EST (subtract 5 hours, 18000 seconds)
+    //    func convertToEST(date: NSDate) -> NSDate {
+    //        print(date)
+    //        let newDate = date.dateByAddingTimeInterval(-18000)
+    //        print(newDate)
+    //        return newDate
     //    }
 }
 
