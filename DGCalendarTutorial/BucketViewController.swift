@@ -11,6 +11,8 @@ import Parse
 
 class BucketViewController: UIViewController {
     
+    @IBOutlet weak var logo: UIImageView!
+    
     var bucketEventsArray: [Event] = []
     var dateFormatter = NSDateFormatter()
 
