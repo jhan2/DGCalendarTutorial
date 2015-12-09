@@ -22,10 +22,21 @@ class CreateEventViewController: UIViewController,UIImagePickerControllerDelegat
     @IBAction func hostCreateEvent(sender: UIButton) {
         // Create a parse object
         let eventObject = PFObject(className: "Event")
+        
+        // all string attributes
         eventObject["EventName"] = eventName.text
         eventObject["hostedBy"] = hostedBy.text
         eventObject["location"] = location.text
         eventObject["description"] = anythingElse.text
+        
+        // saving the photo file
+        let photo = imageView.image!
+        let eventImageData = UIImagePNGRepresentation(photo)
+        let file = PFFile(name: eventName.text! + "Photo.png", data: eventImageData!)
+        file!.saveInBackground()
+        eventObject["eventPhoto"] = file
+        
+        
         eventObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
         print("Object has been saved.")
         }
