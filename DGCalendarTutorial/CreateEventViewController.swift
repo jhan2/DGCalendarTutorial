@@ -53,6 +53,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     
     
     @IBAction func hostCreateEvent(sender: UIButton) {
+        // Save to the Events table first
         // Create a parse object
         let eventObject = PFObject(className: "Event")
         
@@ -69,8 +70,6 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         file!.saveInBackground()
         eventObject["eventPhoto"] = file
     
-        
-        
         // save the start time and end time
         let startNSDate = dateFormatter.dateFromString(startTextField.text!)
         let endNSDate = dateFormatter.dateFromString(endTextField.text!)
@@ -79,9 +78,21 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         
         
         eventObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-        print("Object has been saved.")
+            print("New Event object has been saved.")
         }
         
+        // Then save to the UserEvent table to denote the relationship between the user and event as category "host"
+        //let user = PFUser.currentUser()
+        let user = "J98yoB5TDH"
+        let userEventObject = PFObject(className: "UserEvent")
+        userEventObject["category"] = "host"
+        userEventObject["in_calendar"] = false
+        userEventObject["userID"] = user
+        userEventObject["eventID"] = eventObject.objectId
+        userEventObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            print("UserEvent Object has been saved.")
+        }
+ 
         let alertController = UIAlertController(title: "Event has been posted!", message: "Your created event will be seen by Grapevine users.", preferredStyle: .Alert)
         let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: { action in self.performSegueWithIdentifier("hostCreateEvent", sender: self) } )
         alertController.addAction(defaultAction)
@@ -145,4 +156,4 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         dismissViewControllerAnimated(true, completion: nil)
     }
 
-  }
+}
