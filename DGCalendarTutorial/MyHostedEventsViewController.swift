@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Parse
 
 class MyHostedEventsViewController: UIViewController {
+    
+    var myHostedEventsArray: [Event] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
