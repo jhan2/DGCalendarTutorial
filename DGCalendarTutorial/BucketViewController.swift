@@ -11,8 +11,6 @@ import Parse
 
 class BucketViewController: UIViewController {
     
-    @IBOutlet weak var bucketList: UITextView!
-    
     var bucketEventsArray: [Event] = []
     var dateFormatter = NSDateFormatter()
 

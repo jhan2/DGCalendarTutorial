@@ -45,6 +45,27 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func notInterestedTapped(sender: UIButton) {
+        // let user = PFUser.currentUser()
+        // hardcoded user for now
+        let user = "J98yoB5TDH"
+        
+        // Create a parse object
+        let notInterestedUserEvent = PFObject(className: "UserEvent")
+        
+        // Only need the objectID of the current event to save into UserEvent table
+        notInterestedUserEvent["eventID"] = eventsArray[arrayIndex].objectID
+        
+        notInterestedUserEvent["category"] = "discarded"
+        notInterestedUserEvent["in_calendar"] = false
+        notInterestedUserEvent["userID"] = user
+        
+        notInterestedUserEvent.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            print("Object has been saved.")
+        }
+
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,46 +164,5 @@ class ViewController: UIViewController {
         }
     }
     
-    
-    
-    // Probably functions that are not needed for Grapevine
-    //    // Removes an event from the EKEventStore. The method assumes the eventStore is created and
-    //    // accessible
-    //    func deleteEvent(eventStore: EKEventStore, eventIdentifier: String) {
-    //        let eventToRemove = eventStore.eventWithIdentifier(eventIdentifier)
-    //        if (eventToRemove != nil) {
-    //            do {
-    //                try eventStore.removeEvent(eventToRemove!, span: .ThisEvent)
-    //            } catch {
-    //                print("Bad things happened")
-    //            }
-    //        }
-    //    }
-    
-    //    // Responds to button to remove event. This checks that we have permission first, before removing the
-    //    // event
-    //    @IBAction func removeEvent(sender: UIButton) {
-    //        let eventStore = EKEventStore()
-    //
-    //        if (EKEventStore.authorizationStatusForEntityType(.Event) != EKAuthorizationStatus.Authorized) {
-    //            eventStore.requestAccessToEntityType(.Event, completion: { (granted, error) -> Void in
-    //                self.deleteEvent(eventStore, eventIdentifier: self.savedEventId)
-    //            })
-    //        } else {
-    //            deleteEvent(eventStore, eventIdentifier: savedEventId)
-    //        }
-    //        
-    //    }
-    
-    
-    
-    // may not be necessary
-    //    // converts a NSDate object from GMT to EST (subtract 5 hours, 18000 seconds)
-    //    func convertToEST(date: NSDate) -> NSDate {
-    //        print(date)
-    //        let newDate = date.dateByAddingTimeInterval(-18000)
-    //        print(newDate)
-    //        return newDate
-    //    }
 }
 
