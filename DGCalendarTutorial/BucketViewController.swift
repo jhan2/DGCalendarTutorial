@@ -27,13 +27,7 @@ class BucketViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     func getBucketEventsDataFromParse() {
-        getBucketEventIDs()
-        
-    }
-    
-    func getBucketEventIDs() {
         let bucketEventIDsQuery = PFQuery(className: "UserEvent")
         bucketEventIDsQuery.whereKey("category", equalTo: "bucket")
         //let user = PFUser.currentUser()
