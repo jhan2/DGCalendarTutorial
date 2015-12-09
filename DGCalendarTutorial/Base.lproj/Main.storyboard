@@ -305,10 +305,10 @@
             </objects>
             <point key="canvasLocation" x="822.5" y="169.5"/>
         </scene>
-        <!--View Controller-->
+        <!--My Hosted Events View Controller-->
         <scene sceneID="AHa-pF-1dS">
             <objects>
-                <viewController id="SR9-YF-mPD" sceneMemberID="viewController">
+                <viewController id="SR9-YF-mPD" customClass="MyHostedEventsViewController" customModule="DGCalendarTutorial" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0oP-N9-e1G"/>
                         <viewControllerLayoutGuide type="bottom" id="Bu9-l5-VYh"/>

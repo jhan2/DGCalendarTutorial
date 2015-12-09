@@ -38,7 +38,7 @@ class BucketViewController: UIViewController {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 // The find succeeded.
-                print("Successfully retrieved \(objects!.count) eventIDs.")
+                print("Successfully retrieved \(objects!.count) events in the bucket.")
                 // Do something with the found objects
                 if let objects = objects {
                     for object in objects {
