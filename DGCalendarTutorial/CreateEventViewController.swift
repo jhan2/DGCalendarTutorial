@@ -24,26 +24,24 @@ class CreateEventViewController: UIViewController {
     
     
     @IBAction func startTextFieldEditing(sender: UITextField) {
-        
         let datePickerView:UIDatePicker = UIDatePicker()
         
         datePickerView.datePickerMode = UIDatePickerMode.DateAndTime
         
         sender.inputView = datePickerView
         
-        datePickerView.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerView.addTarget(self, action: Selector("startPickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         
     }
     
     @IBAction func endTextFieldEditing(sender: UITextField) {
-        
         let datePickerView:UIDatePicker = UIDatePicker()
         
         datePickerView.datePickerMode = UIDatePickerMode.DateAndTime
         
         sender.inputView = datePickerView
         
-        datePickerView.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        datePickerView.addTarget(self, action: Selector("endPickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
     }
     
     
@@ -86,10 +84,12 @@ class CreateEventViewController: UIViewController {
     }
     
     
-    func datePickerValueChanged(sender:UIDatePicker) {
-        
+    func startPickerValueChanged(sender:UIDatePicker) {
         startTextField.text = dateFormatter.stringFromDate(sender.date)
-        
+    }
+    
+    func endPickerValueChanged(sender:UIDatePicker) {
+        endTextField.text = dateFormatter.stringFromDate(sender.date)
     }
     
     
