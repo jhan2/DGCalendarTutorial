@@ -9,12 +9,15 @@
 import UIKit
 import Parse
 
-class CreateEventViewController: UIViewController {
+class CreateEventViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var eventName: UITextField!
     @IBOutlet weak var hostedBy: UITextField!
     @IBOutlet weak var location: UITextField!
     @IBOutlet weak var anythingElse: UITextField!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    let imagePicker = UIImagePickerController()
     
     @IBAction func hostCreateEvent(sender: UIButton) {
         // Create a parse object
@@ -27,11 +30,20 @@ class CreateEventViewController: UIViewController {
         print("Object has been saved.")
         }
     }
+    
+    @IBAction func addImageButtonTapped() {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        imagePicker.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,5 +61,24 @@ class CreateEventViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    
+    // MARK: - UIImagePickerControllerDelegate Methods
+    
+    func imagePickerController(picker:UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageView.contentMode = .ScaleAspectFit
+            imageView.image = pickedImage
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }
