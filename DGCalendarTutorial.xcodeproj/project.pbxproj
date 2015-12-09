@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B389E9D1C17E5FC001D60F7 /* BucketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B389E9C1C17E5FC001D60F7 /* BucketViewController.swift */; };
+		0B389E9F1C183C6D001D60F7 /* MyHostedEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B389E9E1C183C6D001D60F7 /* MyHostedEventsViewController.swift */; };
 		0B3B528C1C17B0B6009F2E53 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3B528B1C17B0B6009F2E53 /* CreateEventViewController.swift */; };
 		0B4F5D7E1C12438E0095C9D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F5D7D1C12438E0095C9D4 /* AppDelegate.swift */; };
 		0B4F5D801C12438E0095C9D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4F5D7F1C12438E0095C9D4 /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		0B389E9C1C17E5FC001D60F7 /* BucketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BucketViewController.swift; sourceTree = "<group>"; };
+		0B389E9E1C183C6D001D60F7 /* MyHostedEventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHostedEventsViewController.swift; sourceTree = "<group>"; };
 		0B3B528B1C17B0B6009F2E53 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		0B4F5D7A1C12438E0095C9D4 /* DGCalendarTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGCalendarTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4F5D7D1C12438E0095C9D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				0B4F5D7F1C12438E0095C9D4 /* ViewController.swift */,
 				0B3B528B1C17B0B6009F2E53 /* CreateEventViewController.swift */,
 				0B389E9C1C17E5FC001D60F7 /* BucketViewController.swift */,
+				0B389E9E1C183C6D001D60F7 /* MyHostedEventsViewController.swift */,
 				0B4F5D811C12438E0095C9D4 /* Main.storyboard */,
 				0B5F649E1C150CDF009F5F3C /* Event.swift */,
 				0B4F5D841C12438E0095C9D4 /* Assets.xcassets */,
@@ -395,6 +398,7 @@
 				0B4F5D801C12438E0095C9D4 /* ViewController.swift in Sources */,
 				0B4F5D7E1C12438E0095C9D4 /* AppDelegate.swift in Sources */,
 				0B3B528C1C17B0B6009F2E53 /* CreateEventViewController.swift in Sources */,
+				0B389E9F1C183C6D001D60F7 /* MyHostedEventsViewController.swift in Sources */,
 				0B389E9D1C17E5FC001D60F7 /* BucketViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

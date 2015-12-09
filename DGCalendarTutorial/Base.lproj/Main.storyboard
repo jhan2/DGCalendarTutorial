@@ -90,7 +90,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxK-1m-o68">
-                                <rect key="frame" x="20" y="474" width="177" height="28"/>
+                                <rect key="frame" x="20" y="474" width="86" height="26"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="My Bucket">
@@ -110,6 +110,17 @@
                                 </state>
                                 <connections>
                                     <action selector="notInterestedTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="azW-fR-vE7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2p-Dt-58t">
+                                <rect key="frame" x="111" y="472" width="86" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="My Events">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="SR9-YF-mPD" kind="modal" id="Gds-cU-hoq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -294,6 +305,26 @@
             </objects>
             <point key="canvasLocation" x="822.5" y="169.5"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="AHa-pF-1dS">
+            <objects>
+                <viewController id="SR9-YF-mPD" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0oP-N9-e1G"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bu9-l5-VYh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dhv-Yf-4qF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z5s-4d-hPR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="743.5" y="983.5"/>
+        </scene>
         <!--Bucket View Controller-->
         <scene sceneID="ial-id-QuU">
             <objects>
@@ -312,7 +343,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rMb-jV-nrh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="629.5" y="1015.5"/>
+            <point key="canvasLocation" x="245.5" y="1012.5"/>
         </scene>
     </scenes>
 </document>
