@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
 
-    var savedEventId : String = ""
     var arrayIndex : Int = 0
     var eventsArray: [Event] = []
     var dateFormatter = NSDateFormatter()
@@ -48,7 +47,6 @@ class ViewController: UIViewController {
     
 
     override func viewDidLoad() {
-        print("got here")
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // sets the display date format for the dateformatter, used for all dates with the stringFromDate method
@@ -56,13 +54,6 @@ class ViewController: UIViewController {
         
         getEventsDataFromParse()
         
-        //        // Testing parse set up
-        //        let testObject = PFObject(className: "Event")
-        //        testObject["EventName"] = "End Of Finals"
-        //        testObject["hostedBy"] = "The Students of CMU"
-        //        testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-        //            print("Object has been saved.")
-        //        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -87,7 +78,6 @@ class ViewController: UIViewController {
         event.calendar = eventStore.defaultCalendarForNewEvents
         do {
             try eventStore.saveEvent(event, span: .ThisEvent)
-            savedEventId = event.eventIdentifier
         } catch {
             print("Bad things happened")
         }
@@ -101,13 +91,13 @@ class ViewController: UIViewController {
     }
     
     func getEventsDataFromParse() {
-        var query = PFQuery(className:"Event")
+        let query = PFQuery(className:"Event")
         //query.whereKey("playerName", equalTo:"Sean Plott")
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 // The find succeeded.
-                print("Successfully retrieved \(objects!.count) scores.")
+                print("Successfully retrieved \(objects!.count) events in total.")
                 // Do something with the found objects
                 if let objects = objects {
                     for object in objects {
