@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class CreateEventViewController: UIViewController {
+class CreateEventViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var eventName: UITextField!
     @IBOutlet weak var hostedBy: UITextField!
@@ -22,6 +22,13 @@ class CreateEventViewController: UIViewController {
     let imagePicker = UIImagePickerController()
     var dateFormatter = NSDateFormatter()
     
+    @IBAction func addImageButtonTapped() {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
     
     @IBAction func startTextFieldEditing(sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
@@ -31,7 +38,6 @@ class CreateEventViewController: UIViewController {
         sender.inputView = datePickerView
         
         datePickerView.addTarget(self, action: Selector("startPickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-        
     }
     
     @IBAction func endTextFieldEditing(sender: UITextField) {
@@ -63,10 +69,22 @@ class CreateEventViewController: UIViewController {
         file!.saveInBackground()
         eventObject["eventPhoto"] = file
         
+        // save the start time and end time
+        let startNSDate = dateFormatter.dateFromString(startTextField.text!)
+        let endNSDate = dateFormatter.dateFromString(endTextField.text!)
+        eventObject["start"] = startNSDate
+        eventObject["end"] = endNSDate
+        
         
         eventObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
         print("Object has been saved.")
         }
+        
+        let alertController = UIAlertController(title: "Event has been posted!", message: "Your created event will be seen by Grapevine users.", preferredStyle: .Alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        presentViewController(alertController, animated: true, completion: nil)
+        
     }
     
 
@@ -74,7 +92,7 @@ class CreateEventViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        imagePicker.delegate = self
         dateFormatter.dateFormat = "MMM dd, yyyy h:mm a"
     }
 
@@ -105,5 +123,24 @@ class CreateEventViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+ 
     
+    
+    // MARK: - UIImagePickerControllerDelegate Methods
+    
+    func imagePickerController(picker:UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            imageView.contentMode = .ScaleAspectFit
+            imageView.image = pickedImage
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
   }

@@ -96,18 +96,8 @@ class ViewController: UIViewController {
         let alertController = UIAlertController(title: "Event Saved!", message: "Your event has been saved to your iCalendar.", preferredStyle: .Alert)
         let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertController.addAction(defaultAction)
-        
         presentViewController(alertController, animated: true, completion: nil)
         
-        
-//        let alertController = UIAlertController(title: nil, message: "Added!", preferredStyle: .Alert)
-//        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-//        presentViewController(alertController, animated: true, completion: nil)
-//        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
-//            Int64(3 * Double(NSEC_PER_SEC)))
-//        dispatch_after(delayTime, dispatch_get_main_queue()) {
-//            presentedViewController!.dismissViewControllerAnimated(true, completion: nil);
-//        }
     }
     
     func getEventsDataFromParse() {
