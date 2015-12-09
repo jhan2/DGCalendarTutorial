@@ -86,7 +86,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ZCp-o3-Ks3" kind="modal" id="75X-TA-IZT"/>
+                                    <segue destination="ZCp-o3-Ks3" kind="modal" identifier="hostCreateEvent" id="75X-TA-IZT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -264,6 +264,7 @@
                         <outlet property="imageView" destination="NqZ-yr-41P" id="iJq-hc-H5J"/>
                         <outlet property="location" destination="XSx-Dc-KLp" id="Sal-jC-aK0"/>
                         <outlet property="startTextField" destination="5Nu-3t-t2r" id="wiF-4F-bhq"/>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="hostCreateEvent" id="dTa-2o-bpQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEu-JV-giV" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -64,10 +64,12 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         
         // saving the photo file
         let photo = imageView.image!
-        let eventImageData = UIImagePNGRepresentation(photo)
+        let eventImageData = UIImageJPEGRepresentation(photo, 0.5)
         let file = PFFile(name: eventName.text! + "Photo.png", data: eventImageData!)
         file!.saveInBackground()
         eventObject["eventPhoto"] = file
+    
+        
         
         // save the start time and end time
         let startNSDate = dateFormatter.dateFromString(startTextField.text!)
@@ -81,7 +83,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         let alertController = UIAlertController(title: "Event has been posted!", message: "Your created event will be seen by Grapevine users.", preferredStyle: .Alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: { action in self.performSegueWithIdentifier("hostCreateEvent", sender: self) } )
         alertController.addAction(defaultAction)
         presentViewController(alertController, animated: true, completion: nil)
         
