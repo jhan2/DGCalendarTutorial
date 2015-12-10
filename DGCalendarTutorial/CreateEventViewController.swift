@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class CreateEventViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CreateEventViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var eventName: UITextField!
     @IBOutlet weak var hostedBy: UITextField!
@@ -21,6 +21,8 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         
     let imagePicker = UIImagePickerController()
     var dateFormatter = NSDateFormatter()
+    // keyboard height
+    var kbHeight: CGFloat!
     
     @IBAction func addImageButtonTapped() {
         imagePicker.allowsEditing = false
@@ -76,24 +78,29 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         eventObject["start"] = startNSDate
         eventObject["end"] = endNSDate
         
-        
-        eventObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            print("New Event object has been saved.")
+        do {
+            try eventObject.save()
+        } catch {
+            print(error)
         }
         
-        
         // This isn't fully working yet, async request is giving issues
-//        // Then save to the UserEvent table to denote the relationship between the user and event as category "host"
-//        //let user = PFUser.currentUser()
-//        let user = "J98yoB5TDH"
-//        let userEventObject = PFObject(className: "UserEvent")
-//        userEventObject["category"] = "host"
-//        userEventObject["in_calendar"] = false
-//        userEventObject["userID"] = user
-//        userEventObject["eventID"] = eventObject.objectId
-//        userEventObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-//            print("UserEvent Object has been saved.")
+        // Then save to the UserEvent table to denote the relationship between the user and event as category "host"
+        //let user = PFUser.currentUser()
+        let user = "J98yoB5TDH"
+        let userEventObject = PFObject(className: "UserEvent")
+        userEventObject["category"] = "host"
+        userEventObject["in_calendar"] = false
+        userEventObject["userID"] = user
+        userEventObject["eventID"] = eventObject.objectId
+        userEventObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            print("UserEvent Object has been saved.")
+        }
+
+//        eventObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+//            print("New Event object has been saved.")
 //        }
+        
  
         let alertController = UIAlertController(title: "Event has been posted!", message: "Your created event will be seen by Grapevine users.", preferredStyle: .Alert)
         let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: { action in self.performSegueWithIdentifier("hostCreateEvent", sender: self) } )
@@ -108,7 +115,12 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
 
         // Do any additional setup after loading the view.
         imagePicker.delegate = self
+        eventName.delegate = self
         dateFormatter.dateFormat = "MMM dd, yyyy h:mm a"
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,8 +150,57 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
         // Pass the selected object to the new view controller.
     }
     */
- 
     
+    
+    
+    // All functions for dismissing the keyboard when creating in a form
+    override func viewWillAppear(animated:Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let keyboardSize =  (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                kbHeight = keyboardSize.height
+                self.animateTextField(true)
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        self.animateTextField(false)
+    }
+    
+    func animateTextField(up: Bool) {
+        var movement = (up ? -kbHeight : kbHeight)
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+        })
+    }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    // Delegate method
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+ 
     
     // MARK: - UIImagePickerControllerDelegate Methods
     
