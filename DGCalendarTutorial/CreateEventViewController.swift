@@ -18,7 +18,7 @@ class CreateEventViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var startTextField: UITextField!
     @IBOutlet weak var endTextField: UITextField!
-    
+        
     let imagePicker = UIImagePickerController()
     var dateFormatter = NSDateFormatter()
     

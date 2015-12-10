@@ -189,10 +189,6 @@
                                     <action selector="addImageButtonTapped" destination="ZCp-o3-Ks3" eventType="touchUpInside" id="m3y-Fp-NQI"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NqZ-yr-41P">
-                                <rect key="frame" x="218" y="87" width="62" height="51"/>
-                                <animations/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aof-Lc-YoG">
                                 <rect key="frame" x="15" y="153" width="43" height="21"/>
                                 <animations/>
@@ -284,6 +280,10 @@
                                     <action selector="endTextFieldEditing:" destination="ZCp-o3-Ks3" eventType="editingDidBegin" id="s72-OI-vCQ"/>
                                 </connections>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NqZ-yr-41P">
+                                <rect key="frame" x="218" y="87" width="62" height="51"/>
+                                <animations/>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
